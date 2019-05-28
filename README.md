@@ -1,6 +1,6 @@
 # butternutbox
 
-#script
+# script
 
 ```
 yarn start
@@ -8,7 +8,7 @@ yarn start
 
 to build
 
-#usage
+# usage
 
 click change button to render Modal
 
