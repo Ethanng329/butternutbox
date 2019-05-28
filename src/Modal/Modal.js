@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { format } from 'date-fns';
+
 function Modal({
   show,
   onClick,
@@ -7,7 +9,9 @@ function Modal({
   dayOfWeek,
   CalenderData,
   selectedDate,
-  monthRange
+  monthRange,
+  animate,
+  onMouse
 }) {
   if (!show) {
     return null;
@@ -27,18 +31,17 @@ function Modal({
             {CalenderData.map((item, index) => {
               return (
                 <button
-                  autoFocus
                   className={
-                    item === selectedDate
+                    item.date === selectedDate
                       ? 'date_button_selected'
                       : 'date_button'
                   }
-                  disabled={!item.free}
+                  disabled={!item.is_deliverable}
                   onClick={dateHandler}
                   key={index}
                   value={item.date}
                 >
-                  {item.date}
+                  {format(item.date, 'D')}
                 </button>
               );
             })}

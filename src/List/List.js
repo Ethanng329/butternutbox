@@ -1,10 +1,10 @@
 import React from 'react';
+import { format } from 'date-fns';
 
 import van from '../static/images/van.svg';
 import diary from '../static/images/calendar.svg';
 
 function List({ onClick, showSelectedDate, selectedDate }) {
-  const { date, dayOfWeek, month } = selectedDate;
   return (
     <div className="list_container">
       <h2 className="list_title">Choose your delivery date</h2>
@@ -19,9 +19,7 @@ function List({ onClick, showSelectedDate, selectedDate }) {
           <div className="img_background">
             <img src={diary} alt="diary icon" />
           </div>
-          <span>
-            {dayOfWeek} {month} {date}
-          </span>
+          <span>{format(selectedDate, 'ddd MMM D')}</span>
           <button onClick={onClick} className="change_button">
             Change
           </button>

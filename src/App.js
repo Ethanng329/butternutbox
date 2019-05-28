@@ -1,29 +1,33 @@
 import React, { useState } from 'react';
+import { format } from 'date-fns';
 
 import List from './List/List';
 import Modal from './Modal/Modal';
-
 import './App.css';
+import { jsonData } from './jsonData';
 
-import CalenderData from './CalenderData';
-
-const dayOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const dayOfWeek = jsonData
+  .map(item => {
+    const dayofWeek = format(item.date, 'dd');
+    return dayofWeek.charAt(0);
+  })
+  .slice(0, 7);
 
 function App() {
-  const initialSelectedDate = CalenderData[0];
-  const [isShow, setIsShow] = useState(true);
+  const initialSelectedDate = jsonData[0].date;
+  const [isShow, setIsShow] = useState(false);
   const [selectedDate, setSelectedDate] = useState(initialSelectedDate);
 
   const handleDate = event => {
-    const newSelectedDate = CalenderData.find(
+    const newSelectedDate = jsonData.find(
       item => item.date === event.target.value
     );
-    setSelectedDate(newSelectedDate);
+    setSelectedDate(newSelectedDate.date);
   };
 
   const monthChecker = () => {
-    const firstDataMonth = CalenderData[0].month;
-    const lastDataMonth = CalenderData[CalenderData.length - 1].month;
+    const firstDataMonth = format(jsonData[0].date, 'MMM');
+    const lastDataMonth = format(jsonData[jsonData.length - 1].date, 'MMM');
     if (firstDataMonth === lastDataMonth) {
       return firstDataMonth;
     } else return `${firstDataMonth}/${lastDataMonth}`;
@@ -40,7 +44,7 @@ function App() {
         monthRange={monthChecker()}
         selectedDate={selectedDate}
         dayOfWeek={dayOfWeek}
-        CalenderData={CalenderData}
+        CalenderData={jsonData}
         dateHandler={event => handleDate(event)}
         show={isShow}
         onClick={() => setIsShow(!isShow)}
