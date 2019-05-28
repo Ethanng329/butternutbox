@@ -130,9 +130,8 @@ span {
   border: none;
 }
 
-.date_button:hover,
-.date_button:active {
-  background-color: var(--Red);
+.date_button:hover {
+  background-color: var(--Pink);
   color: white;
   border: none;
 }
