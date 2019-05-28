@@ -21,6 +21,14 @@ function App() {
     setSelectedDate(newSelectedDate);
   };
 
+  const monthChecker = () => {
+    const firstDataMonth = CalenderData[0].month;
+    const lastDataMonth = CalenderData[CalenderData.length - 1].month;
+    if (firstDataMonth === lastDataMonth) {
+      return firstDataMonth;
+    } else return `${firstDataMonth}/${lastDataMonth}`;
+  };
+
   return (
     <div>
       <List
@@ -29,6 +37,7 @@ function App() {
         selectedDate={selectedDate}
       />
       <Modal
+        monthRange={monthChecker()}
         selectedDate={selectedDate}
         dayOfWeek={dayOfWeek}
         CalenderData={CalenderData}

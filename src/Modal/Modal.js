@@ -6,7 +6,7 @@ function Modal({
   dateHandler,
   dayOfWeek,
   CalenderData,
-  selectedDate
+  monthRange
 }) {
   if (!show) {
     return null;
@@ -15,7 +15,7 @@ function Modal({
   return (
     <div className="modal_container">
       <div className="modal_card">
-        <p className="modal_card_text">MAY/JUNE</p>
+        <p className="modal_card_text">{monthRange}</p>
         <div className="grid_container">
           {dayOfWeek.map((item, index) => {
             return <p key={index}>{item}</p>;
