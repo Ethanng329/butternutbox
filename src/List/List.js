@@ -7,7 +7,7 @@ function List({ onClick, showSelectedDate, selectedDate }) {
   const { date, dayOfWeek, month } = selectedDate;
   return (
     <div className="list_container">
-      <h2>Choose your delivery date</h2>
+      <h2 className="list_title">Choose your delivery date</h2>
       <ul>
         <li>
           <div className="img_background">
